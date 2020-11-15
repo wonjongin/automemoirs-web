@@ -7,7 +7,7 @@ public class Props {
     private String time;
     private String desc;
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
 

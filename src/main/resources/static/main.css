@@ -1,0 +1,35 @@
+.label {
+    font-size: 24px;
+}
+.title{
+    text-align: center;
+}
+body{
+    /* margin-left: 30px;
+    margin-right: 30px; */
+    background-color: lightyellow;
+}
+.inputField{
+    height: 30px;
+    font-size: 20px;
+    width: 90%;
+    border-radius: 10px;
+}
+.rootForm{
+    width: 80%;
+    margin: 0 auto;
+}
+.textArea{
+    height: 350px;
+    width: 90%;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.submit{
+    width: 85%;
+    height: 50px;
+    font-size: 24px;
+    background-color: greenyellow;
+    margin: 0 auto;
+    border-radius: 15px;
+}
