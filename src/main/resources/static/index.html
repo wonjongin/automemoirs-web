@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Automemoirs</title>
-<body>
-    <h1>hello world</h1>
-</body>
 </head>
+<body>
+<h1>회고록 자동 작성</h1>
+<form method="post" action="/api/automemoirs">
+    <span>제목: </span><input type="text" name="title"> <br>
+    <span>장소: </span><input type="text" name="place"> <br>
+    <span>일시: </span><input type="date" name="date"> <br>
+    <span>시간: </span><input type="text" name="time"> <br>
+    <span>내용: </span><textarea name="desc"></textarea> <br>
+    <input type="submit" name="submit" value="회고록으로 맹글기"> <br>
+</form>
+</body>
 </html>
