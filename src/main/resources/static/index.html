@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <title>Automemoirs</title>
     <link rel="stylesheet" href="main.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="몇가지 질문에 응답하면 자동으로 회고록을 만들어 드려요!!"/>
 </head>
 <body>
 <h1 class="title">회고록 자동 작성</h1>
 <!-- <form method="post" action="/api/automemoirs"> -->
 <form method="POST" action="/api/automemoirs" class="rootForm">
-    <input type="hidden" />
-    <div><span class="label">제목: </span><input type="text" name="title" id="inputTitle" class="inputField"></div> <br>
-    <div><span class="label">장소: </span><input type="text" name="place" id="inputPlace" class="inputField"></div> <br>
-    <div><span class="label">일시: </span><input type="date" name="date" id="inputDate" class="inputField"></div> <br>
-    <div><span class="label">시간: </span><input type="text" name="time" id="inputTime" class="inputField"></div> <br><br>
-    <div><span class="label">내용: </span><textarea name="desc" id="textAreaDesc" class="textArea"></textarea></div> <br>
+    <input type="hidden"/>
+    <div><span class="label">제목: </span><input type="text" name="title" id="inputTitle" class="inputField"></div>
+    <br>
+    <div><span class="label">장소: </span><input type="text" name="place" id="inputPlace" class="inputField"></div>
+    <br>
+    <div><span class="label">일시: </span><input type="date" name="date" id="inputDate" class="inputField"></div>
+    <br>
+    <div><span class="label">시간: </span><input type="text" name="time" id="inputTime" class="inputField"></div>
+    <br><br>
+    <div><span class="label">내용: </span><textarea name="desc" id="textAreaDesc" class="textArea"></textarea></div>
+    <br>
     <input type="submit" name="submit" value="회고록으로 맹글기" id="submit" class="submit"> <br>
 
     <!-- <script type="text/javascript" src="main.js"></script> -->

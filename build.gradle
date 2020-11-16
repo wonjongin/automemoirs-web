@@ -14,8 +14,10 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compile 'kr.dogfoot:hwplib:1.0.2'
+	implementation 'org.projectlombok:lombok'
 }
 
 test {

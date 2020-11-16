@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Automemoirs Dowload</title>
+    <!-- <link rel="stylesheet" th:href="@{/static/main.css}"> -->
+    <style>
+        body{
+            background-color: lightyellow;
+            margin-left: 20px;
+        }
+        .words{
+            font-size: 20px;
+        }
+        .submit{
+            width: 150px;
+            height: 70px;
+            font-size: 20px;
+            background-color: greenyellow;
+            margin: 0 auto;
+            border-radius: 15px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 th:text="${title}">Title</h1>
+    <div th:text="${'장소: ' + place}" class="words">장소: place</div>
+    <div th:text="${'일시: ' + date}" class="words">일시: date</div>
+    <div th:text="${'시간: ' + time}" class="words">시간: time</div><br>
+    <a th:href="${downloadPath}" class="submit">맹글어진 회고록 받기</a><br>
+    <p th:utext="${desc}" class="words">내용1</p>
+<!--    http://nanobyte.iptime.org:8080/api/download/b04379db-e369-46bb-a714-0a6cd18e6334/%EC%A0%9C%EB%AA%A9.hwp-->
+</body>
+</html>
+
+
+<!--"<h1>" + request.getParameter("title") + "</h1><br>"
+                + "장소: " + request.getParameter("place") + "<br>"
+                + "일시: " + request.getParameter("date") + "<br>"
+                + "시간: " + request.getParameter("time") + "<br>"
+                + "<a href=\"/api/download/" + uuid + "/" + request.getParameter("title") + ".hwp\">"
+                + "만들어진 파일 다운로드" + "</a>"
+                + "<p>" + request.getParameter("desc").replace("\r\n", "<br>") + "</p>";
+    }-->

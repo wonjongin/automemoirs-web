@@ -8,6 +8,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -20,12 +22,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.UUID;
 
 import static io.github.wonjongin.automemoirsweb.ControlHWP.createHWP;
 import static io.github.wonjongin.automemoirsweb.ControlHWP.writeHWP;
 
-@RestController
+@Controller
 @RequestMapping(value = "/api")
 public class PostController {
     //    @PostMapping("/automemoirs")
@@ -40,7 +43,7 @@ public class PostController {
 //                + ", desc: " + props.getDesc();
 //    }
     @RequestMapping("/automemoirs")
-    private String createResult(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    private String createResult(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
         String uuid = UUID.randomUUID().toString();
         File uuidDir = new File("./data/" + uuid);
         if (!uuidDir.exists()) {
@@ -52,17 +55,27 @@ public class PostController {
 
         }
 
+
         createHWP("./data/" + uuid + "/" + request.getParameter("title") + ".hwp");
         LocalDate date = LocalDate.parse(request.getParameter("date"));
         writeHWP("./data/" + uuid + "/" + request.getParameter("title") + ".hwp", request.getParameter("title"), date, request.getParameter("time"), request.getParameter("place"), request.getParameter("desc").replace("\r\n","\n"));
 
-        return "<h1>" + request.getParameter("title") + "</h1><br>"
-                + "장소: " + request.getParameter("place") + "<br>"
-                + "일시: " + request.getParameter("date") + "<br>"
-                + "시간: " + request.getParameter("time") + "<br>"
-                + "<a href=\"/api/download/" + uuid + "/" + request.getParameter("title") + ".hwp\">"
-                + "만들어진 파일 다운로드" + "</a>"
-                + "<p>" + request.getParameter("desc").replace("\r\n", "<br>") + "</p>";
+        model.addAttribute("title", request.getParameter("title"));
+        model.addAttribute("place", request.getParameter("place"));
+        model.addAttribute("date", request.getParameter("date"));
+        model.addAttribute("time", request.getParameter("time"));
+        model.addAttribute("desc", request.getParameter("desc").replace("\r\n", "<br>"));
+        model.addAttribute("downloadPath", "./download/" + uuid + "/" + request.getParameter("title") + ".hwp");
+        // http://nanobyte.iptime.org:8080/api/download/b04379db-e369-46bb-a714-0a6cd18e6334/%EC%A0%9C%EB%AA%A9.hwp -> good ex
+        // http://localhost:8080/api/data/22d6770d-1354-4d83-89cd-c7f515e42d01/%EC%A0%9C%EB%AA%A9.hwp -> bad ex
+        return "result";
+//        return "<h1>" + request.getParameter("title") + "</h1><br>"
+//                + "장소: " + request.getParameter("place") + "<br>"
+//                + "일시: " + request.getParameter("date") + "<br>"
+//                + "시간: " + request.getParameter("time") + "<br>"
+//                + "<a href=\"/api/download/" + uuid + "/" + request.getParameter("title") + ".hwp\">"
+//                + "만들어진 파일 다운로드" + "</a>"
+//                + "<p>" + request.getParameter("desc").replace("\r\n", "<br>") + "</p>";
     }
 
     @GetMapping("/download/{uuid}/{fileName}")
