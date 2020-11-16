@@ -15,7 +15,6 @@ import kr.dogfoot.hwplib.writer.HWPWriter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ControlHWP {
     // HWP 파일 생성을 위한 함수
