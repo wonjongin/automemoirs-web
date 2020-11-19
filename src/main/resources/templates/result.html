@@ -4,6 +4,7 @@
     <meta charset="UTF-8" >
     <title>Automemoirs Dowload</title>
     <!-- <link rel="stylesheet" th:href="@{/static/main.css}"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>
         body{
             background-color: lightyellow;
@@ -22,15 +23,18 @@
             padding: 10px;
         }
     </style>
+    <script type="text/javascript" src="/timer.js"></script>
 </head>
 <body>
     <h1 th:text="${title}">Title</h1>
     <div th:text="${'장소: ' + place}" class="words">장소: place</div>
     <div th:text="${'일시: ' + date}" class="words" >일시: date</div>
     <div th:text="${'시간: ' + time}" class="words">시간: time</div><br>
-    <a th:href="${downloadPath}" class="submit">맹글어진 회고록 받기</a><br>
+    <a th:href="${downloadPath}" id="downloadBtn" class="submit">맹글어진 회고록 받기</a><br>
+    <p id="timer">남은 시간</p>
     <p th:utext="${desc}" class="words">내용1</p>
 <!--    http://nanobyte.iptime.org:8080/api/download/b04379db-e369-46bb-a714-0a6cd18e6334/%EC%A0%9C%EB%AA%A9.hwp-->
+    
 </body>
 </html>
 
